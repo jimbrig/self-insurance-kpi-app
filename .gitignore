@@ -1,0 +1,9 @@
+.Rhistory
+.RData
+.Rproj.user
+
+*.xlsx
+
+shiny_app/config.yml
+
+.DS_Store
