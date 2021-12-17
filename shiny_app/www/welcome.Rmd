@@ -1,0 +1,83 @@
+---
+pagetitle: "welcome"
+output: html_document
+---
+
+## Self Insurance KPI APP <img src='images/KPI-Tracking.png' align="right" height="135" /> {.tabset}
+
+***
+
+Welcome to the Self Insurance KPI Tracking R Shiny Web App! 
+
+Please review the below information before proceeding to the application. 
+
+Once you are done reviewing, click on the "Tour App" button to preview the 
+application's various features or "Dismiss" to begin using the application.
+
+***
+
+### Data
+
+This application uses scrubbed, simulated claims and exposure data to represent the two 
+core components of an actuarial data model: 
+
+- **Exposures** and 
+- **Claims** Data.
+
+The data is further segmented into arbitrary segments using the following possible fields:
+
+- Coverage (Workers Compensation or Automobile Liability)
+- Business Unit
+- Region
+- Injury
+- Vehicle
+
+#### Exposure Data
+
+- For Worker's Compensation the assumed exposure base is Payroll.
+- For Auto Liability the assumed exposure base is miles driven.
+
+*Note: to perform cross-coverage comparisons and aggregations the application 
+includes a built in mechanism to convert to and from each exposure type.*
+
+#### Claims Data
+
+Claims data is simulated and aggregated into lossruns as of specific evaluation dates.
+
+#### Known Data Limitations 
+
+Please be aware of the following: 
+
++ Reported and Open Counts are grouped by occurrence and exclude incidents. 
++ Claim Details (i.e. everything except claim status and financials) are pulled 
+from the loss run at the most recent evaluation date. 
++ The application currently only includes April, August, and December loss runs. 
++ Exposures are only able to be split by Year, Member, and Department. 
+As a result, filtering down loss rate and frequency metrics using any other 
+filters will produce differences between the numerator (filtered) and the 
+denominator (unfiltered), thereby making the these metrics not-representative 
+of true cost/counts relative to exposure. 
++ Payroll was not made available for Jake’s Finer Foods. As a result, when 
+calculating Auto Liability frequency and loss rates using payroll as an exposure 
+base, the application includes Jake’s AL claims and losses, respectively, but 
+not an accompanying exposure base, skewing the metrics. 
++ All miles assumed to be part of Drivers Department.  
+
+### About
+
+This purpose of this project is to provide  a *Proof-of-Concept* web-application 
+showcasing the ability to track various *Key Performance Indicators* related to 
+Self-Insured or Captive Property-Casualty Insurance Entities using R Shiny.
+
+Visit the following links for more details and to learn about the development of 
+the application:
+
+- [GitHub Repository]()
+- [Blog Post]()
+- [About R Shiny]()
+
+#### Performance Tracking of Key-Performance-Indicators (KPI)
+
+Key performance indicators (KPI) are being used almost everywhere, either knowingly or not. These are specific measurable indicators, based on which a goal can be set and tracked.
+
+Knowing what you want to achieve and by what measurable means (partial goals) you can get there, can be a half of success. 
