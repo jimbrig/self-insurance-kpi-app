@@ -1,0 +1,14 @@
+name: Self-Insurance-KPI-Tracker
+title: Self-Insurance-KPI-Tracker
+username:
+account: jimbrig
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5342624
+bundleId: 5385453
+url: https://jimbrig.shinyapps.io/Self-Insurance-KPI-Tracker/
+when: 1639763085.23968
+lastSyncTime: 1639763085.23968
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: deps.yaml
