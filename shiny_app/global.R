@@ -52,7 +52,7 @@ exposure_data <- qs::qread("data/exposures_scrubbed") %>% filter(program_year !=
 latest_eval <- max(loss_data$eval_date)
 
 contacts <- c(
-  contact_item("Jimmy Briggs", "Developer", "678-491-4856", "jimmy.briggs@tychobra.com")
+  contact_item("Jimmy Briggs", "Developer", "678-491-4856", "jimmy.briggs@jimbrig.com")
 )
 
 metric_choices <- c(
