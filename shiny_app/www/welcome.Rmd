@@ -53,10 +53,9 @@ As a result, filtering down loss rate and frequency metrics using any other
 filters will produce differences between the numerator (filtered) and the 
 denominator (unfiltered), thereby making the these metrics not-representative 
 of true cost/counts relative to exposure. 
-+ Payroll was not made available for Jake’s Finer Foods. As a result, when 
++ Payroll was not made available for all entities/member's and as a result, when 
 calculating Auto Liability frequency and loss rates using payroll as an exposure 
-base, the application includes Jake’s AL claims and losses, respectively, but 
-not an accompanying exposure base, skewing the metrics. 
+base, the application includes all members, but not an accompanying exposure base, skewing the metrics. 
 + All miles assumed to be part of Drivers Department.  
 
 ### About
