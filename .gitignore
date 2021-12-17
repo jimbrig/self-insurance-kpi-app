@@ -7,3 +7,5 @@
 shiny_app/config.yml
 
 .DS_Store
+
+data_prep/cache/
