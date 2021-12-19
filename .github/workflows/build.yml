@@ -16,21 +16,6 @@ jobs:
         github_name: 'jimbrig/self-insurance-kpi-app/kpiapp'
         docker_username: ${{ secrets.DOCKER_USERNAME }}
         docker_password: ${{ secrets.DOCKER_PASSWORD }}
-        github_username: ${{ secrets.GITHUB_USERNAME }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_username: ${{ github.actor }}
+        github_token: ${{ secrets.GITGUB_PAT }}
         extra_tags: 'latest'
-  push_to_registry:
-    name: Push Docker image to GitHub Container Registry
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITGUB_PAT }}
-          registry: ghcr.io
-          repository: jimbrig/self-insurance-kpi-app
-          tags: ${{ github.sha }}
-          dockerfile: Dockerfile
