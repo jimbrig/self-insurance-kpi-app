@@ -1,5 +1,7 @@
 # Self Insurance KPI Tracking App
 
+[![Docker](https://github.com/jimbrig/self-insurance-kpi-app/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/jimbrig/self-insurance-kpi-app/actions/workflows/docker-publish.yml)
+
 This app serves as a *Proof of Concept Demo Shiny Application for Tracking KPIs related to P&C Self Insurance*.
 
 View the live application demo at: <https://jimbrig.shinyapps.io/Self-Insurance-KPI-Tracker/>.
