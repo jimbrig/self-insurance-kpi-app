@@ -10,7 +10,7 @@ jobs:
     - name: Docker Build
       uses: r-hub/actions/docker-build@master
       with:
-        r-version: '4.1.2'
+        r_version: '4.1.2'
         docker_name: 'jimbrig2011/self-insurance-kpi-app'
         github_name: 'jimbrig/self-insurance-kpi-app/kpiapp'
         docker_username: ${{ secrets.DOCKER_USERNAME }}
