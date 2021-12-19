@@ -46,9 +46,8 @@ body <- shinydashboard::dashboardBody(
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
     tags$link(rel = "stylesheet", type = "text/css", href = "introjs-theme.css"),
-    shiny::tags$link(
-      rel = "shortcut icon",
-      href = "images/favicon.ico")
+    tags$link(
+      rel = "icon", type = "image/x-icon", href = "http://localhost:1984/favicon.ico")
   ),
   tags$script(src = "custom.js"),
   tabItems(
