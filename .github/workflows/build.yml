@@ -16,5 +16,5 @@ jobs:
         docker_username: ${{ secrets.DOCKER_USERNAME }}
         docker_password: ${{ secrets.DOCKER_PASSWORD }}
         github_username: ${{ github.actor }}
-        github_token: ${{ secrets.GITGUB_PAT }}
+        github_token: ${{ secrets.GITGUB_TOKEN }}
         extra_tags: 'latest'
