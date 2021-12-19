@@ -1,0 +1,22 @@
+name: Build Docker Image
+on:
+  push:
+    branches: main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Build
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: r-hub/actions/docker-build@master
+      with:
+        r_version: '4.1.2'
+        docker_name: 'jimbrig2011/self-insurance-kpi-app'
+        github_name: 'jimbrig/self-insurance-kpi-app/kpiapp'
+        docker_username: ${{ secrets.DOCKER_USERNAME }}
+        docker_password: ${{ secrets.DOCKER_PASSWORD }}
+        github_username: ${{ github.actor }}
+        github_token: ${GITHUB_TOKEN}
+        extra_tags: 'latest'

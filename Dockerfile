@@ -1,16 +1,17 @@
-FROM merlinoa/shiny_run_min
+FROM rocker/shiny-verse:latest
 
 ARG R_CONFIG_ACTIVE=default
 
-
-RUN apt-get update && apt-get install -y \ 
-  libglpk-dev \ 
-  libssl-dev \ 
-  libxml2-dev \ 
-  libz-dev \ 
-  pandoc \ 
-  pkg-config
-
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    libglpk-dev \
+    libssl-dev \ 
+    libxml2-dev \ 
+    libz-dev \ 
+    pandoc \ 
+    pkg-config && \
+    apt-get clean -y
 
 RUN R -e "install.packages('remotes')"  
 
@@ -36,10 +37,6 @@ RUN R -e "remotes::install_version('shinyjs', version = '2.0.0')"
 RUN R -e "remotes::install_version('shinyWidgets', version = '0.5.4')" 
 RUN R -e "remotes::install_version('stringr', version = '1.4.0')" 
 RUN R -e "remotes::install_version('tibble', version = '3.0.4')"
-
-
-# GitHub R packages 
-RUN R -e "remotes::install_github('Tychobra/polished', ref = '6a4422f503e3542691a0df39314ce69db98931ec')"
 
 
 # Remove index & example apps included w/ shiny-server
