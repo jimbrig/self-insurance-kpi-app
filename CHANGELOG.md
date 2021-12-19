@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - Add CHANGELOG
 - Enhance welcome page docs
 - Add README
+- Update CHANGELOG
 
 ### Features
 
@@ -24,6 +25,15 @@ All notable changes to this project will be documented in this file.
 - Add currently DEPRECATED custom sign in / registration page
 - Add more R helpers
 - Add application static assets and markdown files
+- Add demo video to README.md
+- Setup shiny app for desktop conversion
+- Add on session end to shiny server.R
+- Add external localhost favicon
+- Default icon
+- Add build_electron.R script
+- Add desktop_app utilities
+- Enhance desktop_app files
+- Add all nativfier files
 
 ### Testing
 
@@ -40,6 +50,9 @@ All notable changes to this project will be documented in this file.
 - Gitignore cached data_prep files
 - Ignore various data folder contents
 - Adjust branch on github workflow
+- Re-copy app files top desktop app
+- Ignore derived exe's
+- Ignore .dll's
 
 ### Deploy
 
