@@ -1,16 +1,17 @@
-FROM rocker/shiny
+FROM rocker/shiny-verse:latest
 
 ARG R_CONFIG_ACTIVE=default
 
-
-RUN apt-get update && apt-get install -y \ 
-  libglpk-dev \ 
-  libssl-dev \ 
-  libxml2-dev \ 
-  libz-dev \ 
-  pandoc \ 
-  pkg-config
-
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y && \
+    libglpk-dev \
+    libssl-dev \ 
+    libxml2-dev \ 
+    libz-dev \ 
+    pandoc \ 
+    pkg-config && \
+    apt-get clean -y
 
 RUN R -e "install.packages('remotes')"  
 
