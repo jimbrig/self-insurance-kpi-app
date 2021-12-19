@@ -38,10 +38,6 @@ RUN R -e "remotes::install_version('stringr', version = '1.4.0')"
 RUN R -e "remotes::install_version('tibble', version = '3.0.4')"
 
 
-# GitHub R packages 
-RUN R -e "remotes::install_github('Tychobra/polished', ref = '6a4422f503e3542691a0df39314ce69db98931ec')"
-
-
 # Remove index & example apps included w/ shiny-server
 RUN rm /srv/shiny-server/index.html
 RUN rm -r /srv/shiny-server/sample-apps
