@@ -4,7 +4,7 @@ ARG R_CONFIG_ACTIVE=default
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y && \
+    apt-get install -y \
     libglpk-dev \
     libssl-dev \ 
     libxml2-dev \ 
