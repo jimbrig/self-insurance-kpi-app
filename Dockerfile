@@ -1,4 +1,4 @@
-FROM merlinoa/shiny_run_min
+FROM rocker/shiny
 
 ARG R_CONFIG_ACTIVE=default
 
