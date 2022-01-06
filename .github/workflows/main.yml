@@ -2,8 +2,8 @@ name: demo
 on: push
 
 env:
-  REGISTRY_NAME: shinyacr123
-  APP_NAME: self-insurance-kpi-app
+  REGISTRY_NAME: 'shinyacr123'
+  APP_NAME: 'self-insurance-kpi-app'
 
 jobs:
   demo:
@@ -21,7 +21,7 @@ jobs:
         password: ${ secrets.AZ_SP_CLIENT_SECRET }
 
     - name: Build the Docker image
-      run: docker build . -t ${ env.REGISTRY_NAME }.azurecr.io/${ env.APP_NAME }:${ github.sha }
+      run: docker build . -t ${ env.REGISTRY_NAME }.azurecr.io/${ env.APP_NAME }:latest
 
     - name: Push Image to Docker
-      run: docker push ${ env.REGISTRY_NAME }.azurecr.io/${ env.APP_NAME }:${ github.sha }
+      run: docker push ${ env.REGISTRY_NAME }.azurecr.io/${ env.APP_NAME }:latest
