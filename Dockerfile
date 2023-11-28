@@ -43,31 +43,7 @@ RUN Rscript -e 'install.packages("htmltools", repos="https://cran.rstudio.com/",
 RUN Rscript -e 'install.packages("forcats", repos="https://cran.rstudio.com/", lib = "/usr/local/lib/R/site-library", method = "libcurl", Ncpus = 4)'
 RUN Rscript -e 'install.packages("fs", repos="https://cran.rstudio.com/", lib = "/usr/local/lib/R/site-library", method = "libcurl", Ncpus = 4)'
 
-# RUN R -e "remotes::install_version('config', version = '0.3')"
-# RUN R -e "remotes::install_version('dplyr', version = '1.0.2')"
-# RUN R -e "remotes::install_version('DT', version = '0.16')"
-# RUN R -e "remotes::install_version('forcats', version = '0.5.0')"
-# RUN R -e "remotes::install_version('fs', version = '1.5.0')"
-# RUN R -e "install.packages('highcharter')"
-# RUN R -e "remotes::install_version('htmltools', version = '0.5.0')"
-# RUN R -e "remotes::install_version('knitr', version = '1.30')"
-# RUN R -e "remotes::install_version('lubridate', version = '1.7.9')"
-# RUN R -e "remotes::install_version('purrr', version = '0.3.4')"
-# RUN R -e "remotes::install_version('qs', version = '0.23.3')"
-# RUN R -e "remotes::install_version('rintrojs', version = '0.2.2')"
-# RUN R -e "remotes::install_version('rlang', version = '0.4.8')"
-# RUN R -e "remotes::install_version('rmarkdown', version = '2.5')"
-# RUN R -e "remotes::install_version('shiny', version = '1.5.0')"
-# RUN R -e "remotes::install_version('shinycssloaders', version = '1.0.0')"
-# RUN R -e "remotes::install_version('shinydashboard', version = '0.7.1')"
-# RUN R -e "remotes::install_version('shinyjs', version = '2.0.0')"
-# RUN R -e "remotes::install_version('shinyWidgets', version = '0.5.4')"
-# RUN R -e "remotes::install_version('stringr', version = '1.4.0')"
-# RUN R -e "remotes::install_version('tibble', version = '3.0.4')"
-
 COPY ./shiny_app/ /app/
-
-# RUN Rscript deps.R
 
 ARG SHINY_PORT=3838
 EXPOSE $SHINY_PORT
@@ -83,13 +59,3 @@ RUN echo "Sys.setenv(R_CONFIG_ACTIVE='$R_CONFIG_ACTIVE')" >> /app/.Rprofile
 
 
 CMD ["R", "-e", "options('shiny.port'=3838,shiny.host='0.0.0.0'); shiny::runApp(appDir = '/app')"]
-
-# # Remove index & example apps included w/ shiny-server
-# RUN rm /srv/shiny-server/index.html
-# RUN rm -r /srv/shiny-server/sample-apps
-
-# # Copy app into `shiny_app` directory
-# COPY ./shiny_app /srv/shiny-server/shiny_app
-
-# # Update permissions (recursively) to App directory for `shiny` user
-# RUN chown -R shiny:shiny /srv/shiny-server/shiny_app
