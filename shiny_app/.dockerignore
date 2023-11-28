@@ -1,0 +1,5 @@
+rsconnect/
+deps.yaml
+deps.R
+restart.txt
+.dockerignore

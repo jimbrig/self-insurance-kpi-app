@@ -50,12 +50,12 @@ header_buttons_ui <- function(id, contacts = NULL) {
     messageItem(
       from = "Support",
       message = "Minor Bugfix for Member 2.",
-      icon = icon("envelope"),
-      time = "2020-11-11"
+      icon <- icon("envelope"),
+      time = "1 min"
     )
   )
 
-  account <- polished::profile_module_ui(ns("profile"))
+  # account <- polished::profile_module_ui(ns("profile"))
 
   list(
     messages,
@@ -64,8 +64,8 @@ header_buttons_ui <- function(id, contacts = NULL) {
     refresh,
     # help,
     # disclaimer,
-    contact,
-    account
+    contact
+    # account
   )
 
 }

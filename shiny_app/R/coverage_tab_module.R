@@ -215,7 +215,7 @@ coverage_tab_ui <- function(id) {
 
                     sliderTextInput(
                       inputId = ns("devt_age"),
-                      label = icon_text("clock-o", "Select Development Age:"),
+                      label = icon_text("clock", "Select Development Age:"),
                       choices = loss_data %>% filter(month(eval_date) == 12) %>%
                         pull_unique("devt_age"),
                       post = " Months",
@@ -244,7 +244,7 @@ coverage_tab_ui <- function(id) {
                     id = ns("expo_type"),
                     shinyWidgets::radioGroupButtons(
                       inputId = ns("exposure_type"),
-                      label = icon_text("life-saver", "Select Exposure Base:"),
+                      label = icon_text("life-ring", "Select Exposure Base:"),
                       choiceNames = c(icon_text("dollar", " Payroll"),
                                       icon_text("road", " Miles Driven")),
                       choiceValues = c("payroll", "miles"),
@@ -280,7 +280,7 @@ coverage_tab_ui <- function(id) {
                     justified = TRUE,
                     checkIcon = list(
                       yes = icon("check-square"),
-                      no = icon("square-o")
+                      no <- icon("square-xmark")
                     ),
                     width = "100%"
                   ) %>% shinyjs::hidden()
@@ -306,7 +306,7 @@ coverage_tab_ui <- function(id) {
 
                 picker(
                   ns("member"),
-                  label = icon_text("address-card-o" , "Select Member:"),
+                  label = icon_text("address-card" , "Select Member:"),
                   choices = loss_data %>% pull_unique("member"),
                   multiple = TRUE,
                   selected = pull_unique(loss_data, "member"),
@@ -326,7 +326,7 @@ coverage_tab_ui <- function(id) {
                             pull(inc) %>%
                             prettyNum(
                               big.mark = ",",
-                              digits = 0
+                              digits <- 1
                             ) %>%
                             as.character()
                         }),
@@ -359,7 +359,7 @@ coverage_tab_ui <- function(id) {
                             pull(inc) %>%
                             prettyNum(
                               big.mark = ",",
-                              digits = 0
+                              digits <- 1
                             ) %>%
                             as.character()
                         }),
@@ -372,7 +372,7 @@ coverage_tab_ui <- function(id) {
 
                 picker(
                   ns("incurred_group"),
-                  label = icon_text("money", " Select Claim Size - $ Incurred:"),
+                  label = icon_text("money-bill", " Select Claim Size - $ Incurred:"),
                   choices = levels(loss_data$incurred_group),
                   multiple = TRUE,
                   selected = levels(loss_data$incurred_group),
@@ -383,7 +383,7 @@ coverage_tab_ui <- function(id) {
 
                 picker(
                   ns("report_lag_group"),
-                  label = icon_text("clock-o", "Select Report Lag:"),
+                  label = icon_text("clock", "Select Report Lag:"),
                   choices = levels(loss_data$report_lag_group),
                   multiple = TRUE,
                   selected = levels(loss_data$report_lag_group),
@@ -444,7 +444,7 @@ coverage_tab_ui <- function(id) {
 
                   picker(
                     ns("day_of_week"),
-                    label = icon_text("calendar-check-o", "Select Day of Week:"),
+                    label = icon_text("calendar", "Select Day of Week:"),
                     choices = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
                     multiple = TRUE,
                     selected = loss_data %>% pull_unique("day_of_week"),
@@ -521,7 +521,9 @@ coverage_tab <- function(input, output, session, cov) {
     input$exposure_type
   })
 
-  if (tolower(cov) == "al") {
+  observe({
+
+    if (tolower(cov) == "al") {
     updateRadioGroupButtons(session = session, inputId = "group_by",
                             choices = c("Member" = "member",
                                         "Department" = "department",
@@ -529,9 +531,8 @@ coverage_tab <- function(input, output, session, cov) {
                                         "Claimant Age" = "claimant_age_group",
                                         "Cause of Injury" = "cause",
                                         "Claim Type" = "claim_type"))
-  }
+    }
 
-  observe({
     if (is.null(input$eval_date) || input$eval_date == 0 || !(lubridate::month(input$eval_date) %in% c(4, 8, 12))) {
 
       updateAirDateInput(session = session,
@@ -549,10 +550,10 @@ coverage_tab <- function(input, output, session, cov) {
     }
   })
 
-  observe({
-    if (is.null(input$loss_date) || input$loss_date == 0 || length(input$loss_date) == 1) {
+  shiny::observe({
+    if (is.null(input$loss_date)) {
 
-      updateAirDateInput(session = session,
+      shinyWidgets::updateAirDateInput(session = session,
                          inputId = "loss_date",
                          value = c(
                            beginning_of_month(min(loss_data$loss_date, na.rm = TRUE)),
@@ -695,12 +696,12 @@ coverage_tab <- function(input, output, session, cov) {
         paste0(
           paste0("Min: ",
                  prettyNum(
-                   input$incurred_limits[1], digits = 0, big.mark = ","
+                   input$incurred_limits[1], digits = 1, big.mark = ","
                  )
           ),
           paste0("; Max: ",
                  prettyNum(
-                   input$incurred_limits[2], digits = 0, big.mark = ","
+                   input$incurred_limits[2], digits = 1, big.mark = ","
                  )
           )
         ),
@@ -864,7 +865,7 @@ coverage_tab <- function(input, output, session, cov) {
       value =  paste0("$", val),
       subtitle = toupper("Total Incurred"),
       icon = tags$i(
-        class = "fa fa-money",
+        class = "fa fa-money-bill",
         style = "color: #ffffff; padding-right: 30px"
       ),
       color = "navy",
@@ -971,6 +972,3 @@ coverage_tab <- function(input, output, session, cov) {
 
 
 }
-
-
-

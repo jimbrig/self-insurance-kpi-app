@@ -55,7 +55,7 @@ header_buttons_ui <- function(id, contacts = NULL) {
     )
   )
 
-  account <- polished::profile_module_ui(ns("profile"))
+  # account <- polished::profile_module_ui(ns("profile"))
 
   list(
     messages,
@@ -64,8 +64,8 @@ header_buttons_ui <- function(id, contacts = NULL) {
     refresh,
     # help,
     # disclaimer,
-    contact,
-    account
+    contact
+    # account
   )
 
 }
