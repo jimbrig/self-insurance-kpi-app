@@ -1,5 +1,10 @@
 FROM rocker/shiny:latest
 
+LABEL org.opencontainers.image.source = "https://github.com/jimbrig/self-insurance-kpi-app"
+LABEL org.opencontainers.image.authors = "Jimmy Briggs <jimmy.briggs@jimbrig.com>"
+LABEL org.opencontainers.image.title = "Self Insurance KPI App"
+LABEL org.opencontainers.image.description = "A Shiny app for calculating self insurance KPIs"
+
 ARG R_CONFIG_ACTIVE=default
 ENV R_CONFIG_ACTIVE=$R_CONFIG_ACTIVE
 
